@@ -310,10 +310,9 @@ body.reading #pct { opacity:1; }
 
 /* ═══════ CHAPTER INTERLEAF (간지 — 풀페이지) ═══════ */
 .interleaf {
-  width:100vw;
-  height:100vh;
-  margin-left:50%;
-  transform:translateX(-50%);
+  width:100%;
+  min-height:80vh;
+  margin:48px 0;
   display:flex;
   flex-direction:column;
   align-items:center;
@@ -322,6 +321,9 @@ body.reading #pct { opacity:1; }
   position:relative;
   background:var(--bg);
   overflow:hidden;
+  border:1px solid var(--border);
+  border-radius:6px;
+  box-shadow:0 2px 16px rgba(30,60,100,.04);
 }
 /* 배경 장식: 가느다란 세로선 */
 .interleaf::before {
@@ -390,10 +392,9 @@ body.reading #pct { opacity:1; }
 
 /* ═══════ CHAPTER END (마무리 간지) ═══════ */
 .chapter-end {
-  width:100vw;
-  height:100vh;
-  margin-left:50%;
-  transform:translateX(-50%);
+  width:100%;
+  min-height:40vh;
+  margin:48px 0 0;
   display:flex;
   flex-direction:column;
   align-items:center;
@@ -402,6 +403,9 @@ body.reading #pct { opacity:1; }
   background:var(--bg);
   position:relative;
   overflow:hidden;
+  border:1px solid var(--border);
+  border-radius:6px;
+  box-shadow:0 2px 16px rgba(30,60,100,.04);
 }
 .chapter-end::before {
   content:'';
@@ -806,12 +810,10 @@ hr {
   .part-label { font-size:.8rem; }
   .chapter-opener h2, .chapter h2 { font-size:1.25rem; }
   .subsection h3 { font-size:.95rem; }
-  .interleaf { height:100vh; }
-  .interleaf-title { font-size:1.3rem; }
-  .interleaf-hook { font-size:.78rem; max-width:280px; }
-  .interleaf::before { width:140px; height:140px; }
-  .interleaf::after { width:90px; height:90px; }
-  .chapter-end { height:100vh; }
+  .interleaf { min-height:70vh; margin:32px 0; }
+  .interleaf-title { font-size:1.2rem; }
+  .interleaf-hook { font-size:.76rem; max-width:260px; }
+  .chapter-end { min-height:36vh; margin:32px 0 0; }
   table { font-size:.75rem; }
   th,td { padding:8px 12px; }
   p { font-size:.93rem; line-height:1.9; }
