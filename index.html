@@ -308,88 +308,124 @@ body.reading #pct { opacity:1; }
   text-transform:uppercase;
 }
 
-/* ═══════ CHAPTER INTERLEAF (간지) ═══════ */
+/* ═══════ CHAPTER INTERLEAF (간지 — 풀페이지) ═══════ */
 .interleaf {
-  margin:80px 0 0;
-  padding:64px 0 56px;
+  margin:40px calc(var(--page-px) * -1);
+  padding:0;
+  min-height:60vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
   text-align:center;
   position:relative;
-  border-top:1px solid var(--border);
+  background:var(--bg);
+  border-top:none;
+  border-bottom:none;
 }
 .interleaf::before {
   content:'';
-  position:absolute; top:-1px; left:50%;
-  transform:translateX(-50%);
-  width:24px; height:1px;
-  background:var(--accent);
+  position:absolute; top:50%; left:50%;
+  transform:translate(-50%,-50%);
+  width:200px; height:200px;
+  border:1px solid var(--border);
+  border-radius:50%;
+  opacity:.15;
+}
+.interleaf::after {
+  content:'';
+  position:absolute; top:50%; left:50%;
+  transform:translate(-50%,-50%);
+  width:120px; height:120px;
+  border:1px solid var(--border);
+  border-radius:50%;
+  opacity:.1;
 }
 .interleaf-num {
   font-family:var(--sans);
   font-size:.6rem; font-weight:700;
-  letter-spacing:.18em;
+  letter-spacing:.22em;
   text-transform:uppercase;
   color:var(--accent);
-  opacity:.7;
-  margin-bottom:14px;
+  opacity:.6;
+  margin-bottom:20px;
+  position:relative; z-index:1;
 }
 .interleaf-title {
   font-family:var(--serif);
-  font-size:1.35rem; font-weight:700;
+  font-size:1.6rem; font-weight:900;
   line-height:1.4;
-  letter-spacing:-.015em;
+  letter-spacing:-.02em;
   color:var(--text);
-  margin-bottom:16px;
+  margin-bottom:24px;
+  position:relative; z-index:1;
+  max-width:360px;
 }
 .interleaf-hook {
   font-family:var(--serif);
-  font-size:.82rem;
+  font-size:.85rem;
   font-style:italic;
   color:var(--text3);
-  line-height:1.7;
-  max-width:400px;
+  line-height:1.75;
+  max-width:340px;
   margin:0 auto;
   letter-spacing:.005em;
+  position:relative; z-index:1;
+}
+.interleaf-hook::before {
+  content:'―';
+  display:block;
+  color:var(--accent);
+  opacity:.4;
+  margin-bottom:12px;
+  font-style:normal;
 }
 .interleaf + .chapter-opener {
-  margin-top:48px;
-  border-top:none;
+  margin-top:56px;
 }
 .interleaf + .chapter-opener h2 {
-  border-bottom:none;
-  padding-bottom:0;
+  border-bottom:2px solid var(--accent);
+  padding-bottom:16px;
 }
 
 /* ═══════ CHAPTER END (마무리 간지) ═══════ */
 .chapter-end {
-  margin:56px 0 0;
-  padding:40px 0 48px;
+  margin:64px calc(var(--page-px) * -1) 0;
+  padding:48px 0;
+  min-height:20vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
   text-align:center;
+  background:var(--bg);
   position:relative;
 }
 .chapter-end-ornament {
   display:flex;
   align-items:center;
   justify-content:center;
-  gap:16px;
-  margin-bottom:20px;
-  color:var(--border);
-  font-size:.7rem;
-  letter-spacing:.3em;
+  gap:18px;
+  margin-bottom:16px;
+  color:var(--accent);
+  font-size:.65rem;
+  opacity:.35;
 }
 .chapter-end-ornament::before,
 .chapter-end-ornament::after {
   content:'';
-  width:40px; height:1px;
-  background:var(--border);
+  width:36px; height:1px;
+  background:var(--accent);
+  opacity:.5;
 }
 .chapter-end-label {
   font-family:var(--sans);
-  font-size:.58rem;
+  font-size:.55rem;
   font-weight:600;
-  letter-spacing:.12em;
+  letter-spacing:.14em;
   text-transform:uppercase;
   color:var(--text3);
-  opacity:.6;
+  opacity:.45;
 }
 
 /* ═══════ CHAPTER OPENER ═══════ */
@@ -756,9 +792,12 @@ hr {
   .part-label { font-size:.8rem; }
   .chapter-opener h2, .chapter h2 { font-size:1.25rem; }
   .subsection h3 { font-size:.95rem; }
-  .interleaf { padding:48px 0 40px; margin-top:64px; }
-  .interleaf-title { font-size:1.15rem; }
-  .interleaf-hook { font-size:.76rem; }
+  .interleaf { min-height:50vh; margin:24px calc(var(--page-px) * -1); }
+  .interleaf-title { font-size:1.3rem; }
+  .interleaf-hook { font-size:.78rem; max-width:280px; }
+  .interleaf::before { width:160px; height:160px; }
+  .interleaf::after { width:100px; height:100px; }
+  .chapter-end { margin:48px calc(var(--page-px) * -1) 0; min-height:16vh; }
   table { font-size:.75rem; }
   th,td { padding:8px 12px; }
   p { font-size:.93rem; line-height:1.9; }
